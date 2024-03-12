@@ -26,5 +26,11 @@ public class Point {
 		this.selected = selected;
 	}
 	
+	public double distance(Point secondPoint) {
+		int dx = secondPoint.xCoordinate - this.xCoordinate;
+		int dy = secondPoint.yCoordinate - this.yCoordinate;
+		double result = Math.sqrt(dx*dx + dy*dy);
+		return result;
+	}
 	
 }
