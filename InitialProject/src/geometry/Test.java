@@ -54,6 +54,28 @@ public class Test {
 				line1.getStartPoint().getXCoordinate() + 
 				line1.getStartPoint().getYCoordinate())));
 		System.out.println(line1.getEndPoint().getXCoordinate());
+		
+		//vezbe 4
+		Circle circle1 = new Circle();
+		
+		circle1.setCenter(tacka1);
+		circle1.getCenter().setXCoordinate(circle1.getRadius() +
+				(int)line1.getStartPoint().distance(line1.getEndPoint()));
+		
+		System.out.println(circle1.getCenter()); // (24,1)
+		
+		Point p3 = new Point(2,4,true);
+		System.out.println("Point p3: " + p3);
+		System.out.println("Point p3 x: " + p3.getXCoordinate());
+		System.out.println("Point p3 y: " + p3.getYCoordinate());
+		System.out.println("Point p3 selected: " + p3.isSelected());
+		
+		System.out.println(line1);
+		System.out.println(new Rectangle(tacka1, 50, 60));
+		
+		Point p4 = new Point(2,4,false);
+		System.out.println(p3 == p4);
+		System.out.println(p3.equals(p4));
 	}
 
 }

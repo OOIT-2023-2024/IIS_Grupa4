@@ -7,6 +7,19 @@ public class Rectangle {
 	private int height;
 	private boolean selected;
 	
+	//konstruktori
+	public Rectangle() {
+		
+	}
+	public Rectangle(Point upperLeftPoint, int w, int h ) {
+		this.upperLeftPoint = upperLeftPoint;
+		this.width = w;
+		this.height = h;
+	}
+	public Rectangle(Point upperLeftPoint, int w, int h, boolean selected ) {
+		this(upperLeftPoint,w,h);
+		this.selected = selected;
+	}
 	//metode pristupa 
 	
 	public Point getUpperLeftPoint() {
@@ -41,6 +54,24 @@ public class Rectangle {
 	public int circumference() {
 		return 2*width + 2*height;
 	}
-	
+	public String toString() {
+		//Upper left point: (xUpperLeft, yUpperLeft), width = <width>, height = <height> 
+		return "Upper left point: " + upperLeftPoint + ", width = " + width +
+				", heigh = " + height;
+	}
 
+	public boolean equals(Object obj) {
+		if (obj instanceof Rectangle) {
+			Rectangle pomocna = (Rectangle) obj;
+			
+			if(this.upperLeftPoint == pomocna.upperLeftPoint &&
+					this.width == pomocna.width 
+					&& this.height == pomocna.height)
+				return true;
+			else 
+				return false;
+		} else 
+			return false;
+	}
+	
 }

@@ -6,6 +6,18 @@ public class Line {
 	private Point endPoint;
 	private boolean selected;
 	
+	// konstruktori
+	public Line() {
+		
+	}
+	public Line(Point sP, Point eP) {
+		startPoint = sP;
+		endPoint = eP;
+	}
+	public Line(Point sP, Point eP, boolean selected) {
+		this(sP,eP); 
+		this.selected = selected;
+	}
 	// metode pristupa
 	public Point getStartPoint() {
 		return startPoint;
@@ -30,5 +42,20 @@ public class Line {
 	public double length() {
 		return startPoint.distance(endPoint);
 	}
+	public String toString() {
+		// (xStart, yStart) -- > (xEnd, yEnd)
+		return startPoint + "-->" + endPoint;
+	}
 	
+	public boolean equals(Object obj) {
+		if(obj instanceof Line) {
+			Line pomocna = (Line)obj;
+			if (this.startPoint == pomocna.startPoint &&
+					this.endPoint == pomocna.endPoint)
+				return true;
+			else 
+				return false;
+		} else 
+			return false;
+	}
 }

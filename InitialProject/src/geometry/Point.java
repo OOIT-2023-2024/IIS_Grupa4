@@ -6,6 +6,21 @@ public class Point {
 	private int yCoordinate;
 	private boolean selected;
 	
+	// default-ni konstruktor
+	public Point() {
+		
+	}
+	// konstruktori sa parametrima
+	public Point(int xCoordinate, int yCoordinate) {
+		this.xCoordinate = xCoordinate;
+		this.yCoordinate = yCoordinate;
+	}
+	
+	public Point(int xCoordinate, int yCoordinate, boolean selected) {
+		this(xCoordinate, yCoordinate);
+		this.selected = selected;
+	}
+	
 	// Get i set metode
 	public int getXCoordinate() {
 		return xCoordinate;
@@ -32,5 +47,23 @@ public class Point {
 		double result = Math.sqrt(dx*dx + dy*dy);
 		return result;
 	}
-	
+	public String toString() {
+		// (x,y)
+		return "(" + xCoordinate + "," + yCoordinate + ")";
+	}
+	// point1 == point2 vrsi se poredjenje po referenci
+	// point1.equals(point2) vrsi se poredjenje po jednakosti
+	public boolean equals(Object obj) {
+		if(obj instanceof Point) //da li je obj objekat klase Point?
+		{
+			Point pomocna = (Point) obj;
+			if (this.xCoordinate == pomocna.xCoordinate &&
+					this.yCoordinate == pomocna.yCoordinate) 
+				return true;
+			else
+				return false;
+		} else {
+			return false;
+		}
+	}
 }
