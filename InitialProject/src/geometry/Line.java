@@ -58,4 +58,10 @@ public class Line {
 		} else 
 			return false;
 	}
+	
+	public boolean contains(int x, int y) {
+		return this.getStartPoint().distance(new Point(x,y))
+				+ this.getEndPoint().distance(new Point(x,y)) 
+				- this.length() <=2 ;
+	}
 }

@@ -66,4 +66,12 @@ public class Point {
 			return false;
 		}
 	}
+	
+	public boolean contains(int x, int y) {
+		return this.distance(new Point(x,y)) <= 2;	
+	}
+	
+	public boolean contains(Point p) {
+		return this.distance(p) <= 2;
+	}
 }
