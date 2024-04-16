@@ -1,10 +1,11 @@
 package geometry;
 
-public class Point {
+import java.awt.Graphics;
+
+public class Point extends Shape {
 
 	private int xCoordinate;
 	private int yCoordinate;
-	private boolean selected;
 	
 	// default-ni konstruktor
 	public Point() {
@@ -18,7 +19,8 @@ public class Point {
 	
 	public Point(int xCoordinate, int yCoordinate, boolean selected) {
 		this(xCoordinate, yCoordinate);
-		this.selected = selected;
+		//this.selected = selected;
+		setSelected(selected);
 	}
 	
 	// Get i set metode
@@ -33,12 +35,6 @@ public class Point {
 	}
 	public void setYCoordinate(int yCoordinate) {
 		this.yCoordinate = yCoordinate;
-	}
-	public boolean isSelected() {
-		return selected;
-	}
-	public void setSelected(boolean selected) {
-		this.selected = selected;
 	}
 	
 	public double distance(Point secondPoint) {
@@ -73,5 +69,14 @@ public class Point {
 	
 	public boolean contains(Point p) {
 		return this.distance(p) <= 2;
+	}
+	@Override
+	public void draw(Graphics g) {
+		//horizontalna linija
+		g.drawLine(xCoordinate-2, yCoordinate, xCoordinate+2, yCoordinate);
+		
+		//vertikalna linija
+		g.drawLine(xCoordinate, yCoordinate-2, xCoordinate, yCoordinate+2);
+		
 	}
 }

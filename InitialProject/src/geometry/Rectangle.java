@@ -1,11 +1,12 @@
 package geometry;
 
-public class Rectangle {
+import java.awt.Graphics;
+
+public class Rectangle extends Shape {
 
 	private Point upperLeftPoint;
 	private int width;
 	private int height;
-	private boolean selected;
 	
 	//konstruktori
 	public Rectangle() {
@@ -18,7 +19,7 @@ public class Rectangle {
 	}
 	public Rectangle(Point upperLeftPoint, int w, int h, boolean selected ) {
 		this(upperLeftPoint,w,h);
-		this.selected = selected;
+		setSelected(selected);
 	}
 	//metode pristupa 
 	
@@ -40,13 +41,6 @@ public class Rectangle {
 	public void setHeight(int height) {
 		this.height = height;
 	}
-	public boolean isSelected() {
-		return selected;
-	}
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
-	
 	//povrsina i obim
 	public int area() {
 		return width * height;
@@ -83,6 +77,12 @@ public class Rectangle {
 	public boolean contains (Point p) { 
 		
 		return this.contains(p.getXCoordinate(), p.getYCoordinate());
+	}
+	@Override
+	public void draw(Graphics g) {
+		g.drawRect(upperLeftPoint.getXCoordinate(),
+				upperLeftPoint.getYCoordinate(), width, height);
+		
 	}
 	
 }
