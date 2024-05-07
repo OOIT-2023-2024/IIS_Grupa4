@@ -1,5 +1,7 @@
 package geometry;
 
+import java.util.Arrays;
+
 public class Test {
 
 	public static void main(String[] args) {
@@ -76,6 +78,23 @@ public class Test {
 		Point p4 = new Point(2,4,false);
 		System.out.println(p3 == p4);
 		System.out.println(p3.equals(p4));
+		
+		//Sedme vezbe
+		Point p10 = new Point(50, 50);
+		Rectangle r10 = new Rectangle(p10, 10, 10);
+		Rectangle r20 = new Rectangle(p10, 20, 20);
+		Rectangle r30 = new Rectangle(p10, 30, 30);
+		Shape[] rectangles = { r30, r10, r20 };
+		System.out.println("\nNesortiran niz: ");
+		for (int i = 0; i < rectangles.length; i++) {
+			System.out.println(rectangles[i]);
+		}
+		// u pozadini sortira po compareTo
+		Arrays.sort(rectangles);
+		System.out.println("Sortiran niz: ");
+		for (int i = 0; i < rectangles.length; i++) {
+			System.out.println(rectangles[i]);
+		}
 	}
 
 }
