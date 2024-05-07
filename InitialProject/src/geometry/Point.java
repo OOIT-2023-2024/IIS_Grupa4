@@ -23,6 +23,29 @@ public class Point extends Shape {
 		setSelected(selected);
 	}
 	
+	@Override
+	public void moveTo(int x, int y) {
+		this.xCoordinate=x;
+		yCoordinate=y;
+	}
+	
+	@Override
+	public void moveBy(int x, int y) {
+		xCoordinate+=x;
+		yCoordinate+=y;
+	}
+	
+	@Override
+	public int compareTo(Object o) {
+		if(o instanceof Point) {
+			Point shapeToCompare = (Point)o;
+			return (int)this.distance(new Point(0,0))
+					- (int)shapeToCompare.distance(new Point(0,0));
+		}
+		return 0;
+	}
+
+	
 	// Get i set metode
 	public int getXCoordinate() {
 		return xCoordinate;
@@ -79,4 +102,5 @@ public class Point extends Shape {
 		g.drawLine(xCoordinate, yCoordinate-2, xCoordinate, yCoordinate+2);
 		
 	}
+
 }

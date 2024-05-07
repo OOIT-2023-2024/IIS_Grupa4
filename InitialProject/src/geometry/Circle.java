@@ -23,6 +23,25 @@ public class Circle extends Shape{
 		this.radius = radius;
 		setSelected(selected);
 	}
+	
+	@Override
+	public void moveTo(int x, int y) {
+		center.moveTo(x, y);
+	}
+	@Override
+	public void moveBy(int x, int y) {
+		center.moveBy(x, y);
+	}
+	
+	@Override
+	public int compareTo(Object obj) {
+		if(obj instanceof Circle) {
+			Circle shapeToCompare = (Circle)obj;
+			return (int)(this.area() - shapeToCompare.area());
+		}
+		return 0;
+	}
+
 
 	public Point getCenter() {
 		return center;

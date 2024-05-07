@@ -19,6 +19,25 @@ public class Line extends Shape {
 		this(sP,eP); 
 		setSelected(selected);
 	}
+	
+	@Override
+	public void moveTo(int x, int y) {
+		//ostaviti neimplementirano
+	}
+	@Override
+	public void moveBy(int x, int y) {
+		this.startPoint.moveBy(x, y);
+		this.endPoint.moveBy(x, y);
+	}
+	
+	@Override
+	public int compareTo(Object obj) {
+		if(obj instanceof Line) {
+			Line shapeToCompare = (Line)obj;
+			return (int)(this.length() - shapeToCompare.length());
+		}
+		return 0;
+	}
 	// metode pristupa
 	public Point getStartPoint() {
 		return startPoint;

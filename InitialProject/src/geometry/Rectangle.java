@@ -21,7 +21,27 @@ public class Rectangle extends Shape {
 		this(upperLeftPoint,w,h);
 		setSelected(selected);
 	}
+	
+	@Override
+	public void moveTo(int x, int y) {
+		upperLeftPoint.moveTo(x, y);
+	}
+	@Override
+	public void moveBy(int x, int y) {
+		upperLeftPoint.moveBy(x, y);
+	}
+	
+	@Override
+	public int compareTo(Object obj) {
+		if(obj instanceof Rectangle) {
+			Rectangle shapeToCompare = (Rectangle)obj;
+			return this.area() - shapeToCompare.area();
+		}
+		return 0;
+	}
+	
 	//metode pristupa 
+	
 	
 	public Point getUpperLeftPoint() {
 		return upperLeftPoint;
