@@ -1,5 +1,6 @@
 package geometry;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Point extends Shape {
@@ -95,12 +96,18 @@ public class Point extends Shape {
 	}
 	@Override
 	public void draw(Graphics g) {
+		g.setColor(Color.BLACK);
 		//horizontalna linija
 		g.drawLine(xCoordinate-2, yCoordinate, xCoordinate+2, yCoordinate);
 		
 		//vertikalna linija
 		g.drawLine(xCoordinate, yCoordinate-2, xCoordinate, yCoordinate+2);
 		
+		if(this.isSelected()) {
+			// crtam kvadratic plave boje 4x4 piksela
+			g.setColor(Color.blue);
+			g.drawRect(xCoordinate - 2, yCoordinate - 2, 4, 4);
+		}
 	}
 
 }

@@ -1,5 +1,6 @@
 package geometry;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Rectangle extends Shape {
@@ -100,8 +101,20 @@ public class Rectangle extends Shape {
 	}
 	@Override
 	public void draw(Graphics g) {
+		g.setColor(Color.BLACK);
 		g.drawRect(upperLeftPoint.getXCoordinate(),
 				upperLeftPoint.getYCoordinate(), width, height);
+		if(this.isSelected()) {
+			g.setColor(Color.BLUE);
+			g.drawRect(upperLeftPoint.getXCoordinate() - 2,
+					upperLeftPoint.getYCoordinate() -2, 4, 4); //gore levo
+			g.drawRect(upperLeftPoint.getXCoordinate() - 2 + width,
+					upperLeftPoint.getYCoordinate() -2, 4, 4); //gore desno
+			g.drawRect(upperLeftPoint.getXCoordinate() - 2,
+					upperLeftPoint.getYCoordinate() -2 + height, 4, 4); //dole levo
+			g.drawRect(upperLeftPoint.getXCoordinate() - 2 + width,
+					upperLeftPoint.getYCoordinate() -2 + height, 4, 4); //dole desno
+		}
 		
 	}
 	
