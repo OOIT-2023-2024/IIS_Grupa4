@@ -17,6 +17,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ButtonGroup;
@@ -25,6 +26,8 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -35,6 +38,7 @@ public class FrmTest extends JFrame {
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private DefaultListModel dlm = new DefaultListModel();
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -90,6 +94,7 @@ public class FrmTest extends JFrame {
 
 		JLabel lblCrvena = new JLabel("Crvena");
 		GridBagConstraints gbc_lblCrvena = new GridBagConstraints();
+		gbc_lblCrvena.anchor = GridBagConstraints.WEST;
 		gbc_lblCrvena.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCrvena.gridx = 1;
 		gbc_lblCrvena.gridy = 0;
@@ -123,6 +128,7 @@ public class FrmTest extends JFrame {
 
 		JLabel lblPlava = new JLabel("Plava");
 		GridBagConstraints gbc_lblPlava = new GridBagConstraints();
+		gbc_lblPlava.anchor = GridBagConstraints.WEST;
 		gbc_lblPlava.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPlava.gridx = 1;
 		gbc_lblPlava.gridy = 1;
@@ -135,6 +141,8 @@ public class FrmTest extends JFrame {
 				dlm.addElement(tglbtnZuta.getText());
 			}
 		});
+		
+		
 		buttonGroup.add(tglbtnZuta);
 		GridBagConstraints gbc_tglbtnZuta = new GridBagConstraints();
 		gbc_tglbtnZuta.insets = new Insets(0, 0, 5, 5);
@@ -144,6 +152,7 @@ public class FrmTest extends JFrame {
 
 		JLabel lblZuta = new JLabel("Zuta");
 		GridBagConstraints gbc_lblZuta = new GridBagConstraints();
+		gbc_lblZuta.anchor = GridBagConstraints.WEST;
 		gbc_lblZuta.insets = new Insets(0, 0, 5, 5);
 		gbc_lblZuta.gridx = 1;
 		gbc_lblZuta.gridy = 2;
@@ -200,6 +209,25 @@ public class FrmTest extends JFrame {
 		gbc_comboBoxBoje.gridx = 1;
 		gbc_comboBoxBoje.gridy = 3;
 		pnlCenter.add(comboBoxBoje, gbc_comboBoxBoje);
+
+		// dodavanje tekstualnog polja
+		JTextField textFieldDodatnaBoja = new JTextField();
+		textFieldDodatnaBoja.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					dlm.addElement(textFieldDodatnaBoja.getText());
+					textFieldDodatnaBoja.setText("");
+				}
+			}
+		});
+		GridBagConstraints gbc_textField = new GridBagConstraints();
+		gbc_textField.insets = new Insets(0, 0, 5, 0);
+		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField.gridx = 2;
+		gbc_textField.gridy = 1;
+		pnlCenter.add(textFieldDodatnaBoja, gbc_textField);
+		textFieldDodatnaBoja.setColumns(10);
 	}
 
 }
