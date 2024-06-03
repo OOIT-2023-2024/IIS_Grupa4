@@ -30,6 +30,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 
 public class FrmTest extends JFrame {
@@ -141,8 +142,7 @@ public class FrmTest extends JFrame {
 				dlm.addElement(tglbtnZuta.getText());
 			}
 		});
-		
-		
+
 		buttonGroup.add(tglbtnZuta);
 		GridBagConstraints gbc_tglbtnZuta = new GridBagConstraints();
 		gbc_tglbtnZuta.insets = new Insets(0, 0, 5, 5);
@@ -228,6 +228,17 @@ public class FrmTest extends JFrame {
 		gbc_textField.gridy = 1;
 		pnlCenter.add(textFieldDodatnaBoja, gbc_textField);
 		textFieldDodatnaBoja.setColumns(10);
+
+		// odabir boje iz palete - 3. zadatak
+		JButton btnBojaPozadine = new JButton("Boja pozadine");
+		btnBojaPozadine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Color backColor = JColorChooser.showDialog(null, "Choose background color", Color.black);
+				if (backColor != null)
+					pnlCenter.setBackground(backColor);
+			}
+		});
+		pnlSouth.add(btnBojaPozadine);
 	}
 
 }
