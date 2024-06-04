@@ -38,7 +38,7 @@ public class FrmTest extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private DefaultListModel dlm = new DefaultListModel();
+	private DefaultListModel<String> dlm = new DefaultListModel<String>();
 	private JTextField textField;
 
 	/**
@@ -252,6 +252,44 @@ public class FrmTest extends JFrame {
 		gbc_textField.gridy = 1;
 		pnlCenter.add(textFieldDodatnaBoja, gbc_textField);
 		textFieldDodatnaBoja.setColumns(10);
+		
+		JButton btnIzmeniBoju = new JButton("Izmeni boju");
+		btnIzmeniBoju.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int indexOfSelectedElement=lstBoje.getSelectedIndex();
+				
+				if (indexOfSelectedElement >= 0) {
+					String selectedElement = dlm.getElementAt(indexOfSelectedElement);
+					String[] rgbColors = selectedElement.split(" ");
+					DlgTest dlgIzmenaBoje = new DlgTest();
+					dlgIzmenaBoje.getTextFieldRed().setText(rgbColors[0]);
+					dlgIzmenaBoje.getTextFieldGreen().setText(rgbColors[1]);
+					dlgIzmenaBoje.getTextFieldBlue().setText(rgbColors[2]);
+					dlgIzmenaBoje.setVisible(true);
+					
+					if (dlgIzmenaBoje.isOk()) {
+						//nakon zatvaranja dijaloga izvrsava se ovaj deo koda
+						String red = dlgIzmenaBoje.getTextFieldRed().getText();
+						String green = dlgIzmenaBoje.getTextFieldGreen().getText();
+						String blue = dlgIzmenaBoje.getTextFieldBlue().getText();
+						String stringColor = red + " " + green + " " + blue;
+
+						
+						//zbog modifikacije treba da pregazimo vrednost
+						dlm.add(indexOfSelectedElement, stringColor);
+
+						Color color = new Color(Integer.parseInt(red), Integer.parseInt(green), Integer.parseInt(blue));
+						pnlCenter.setBackground(color);
+					} 
+				}
+				
+				
+			}
+		});
+		GridBagConstraints gbc_btnIzmeniBoju = new GridBagConstraints();
+		gbc_btnIzmeniBoju.gridx = 2;
+		gbc_btnIzmeniBoju.gridy = 3;
+		pnlCenter.add(btnIzmeniBoju, gbc_btnIzmeniBoju);
 
 		// odabir boje iz palete - 3. zadatak
 		JButton btnBojaPozadine = new JButton("Boja pozadine");
