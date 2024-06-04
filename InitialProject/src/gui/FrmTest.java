@@ -276,6 +276,7 @@ public class FrmTest extends JFrame {
 
 						
 						//zbog modifikacije treba da pregazimo vrednost
+						dlm.remove(indexOfSelectedElement);
 						dlm.add(indexOfSelectedElement, stringColor);
 
 						Color color = new Color(Integer.parseInt(red), Integer.parseInt(green), Integer.parseInt(blue));
