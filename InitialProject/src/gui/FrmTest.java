@@ -172,6 +172,30 @@ public class FrmTest extends JFrame {
 
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.NORTH);
+		
+		JButton btnAddColor = new JButton("Dodaj boju");
+		btnAddColor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DlgTest dlgDodajBoju=new DlgTest();
+				dlgDodajBoju.setVisible(true);
+				
+				if (dlgDodajBoju.isOk()) {
+					//nakon zatvaranja dijaloga izvrsava se ovaj deo koda
+					String red = dlgDodajBoju.getTextFieldRed().getText();
+					String green = dlgDodajBoju.getTextFieldGreen().getText();
+					String blue = dlgDodajBoju.getTextFieldBlue().getText();
+					String stringColor = red + " " + green + " " + blue;
+					dlm.addElement(stringColor);
+					Color color = new Color(Integer.parseInt(red), Integer.parseInt(green), Integer.parseInt(blue));
+					pnlCenter.setBackground(color);
+				}
+			}
+		});
+		GridBagConstraints gbc_btnAddColor = new GridBagConstraints();
+		gbc_btnAddColor.insets = new Insets(0, 0, 5, 0);
+		gbc_btnAddColor.gridx = 2;
+		gbc_btnAddColor.gridy = 2;
+		pnlCenter.add(btnAddColor, gbc_btnAddColor);
 
 		// labela koja menja boju
 		JLabel lblDodatneBoje = new JLabel("Dodatne boje");
